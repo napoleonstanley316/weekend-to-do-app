@@ -12,7 +12,28 @@ function clickListeners() {
     console.log('clickListeners has been called');
     $('#addButton').on('click', handleSubmit);
     $('#viewRoutines').on('click', '.deleteTask', deleteTask);
+    $('#viewRoutines').on('click', '.completeTask', completeTask);
 } // end of clickListeners
+
+
+function completeTask() {
+    console.log('clicked completeTask');
+  
+    let routine = $(this).closest('tr').data('routine');
+    console.log(routine);
+  
+    $.ajax({
+      type: 'PUT',
+      url: `/routines/${routine.id}`,
+      data: routine
+    }).then(function (response) {
+      console.log('Updated completion status');
+      getRoutines();
+    }).catch(function (error) {
+      alert('error updating status');
+    })
+  
+  }
 
 
 function deleteTask() {
@@ -38,6 +59,7 @@ function handleSubmit() {
         day: $('#dayIn').val(),
         task: $('#taskIn').val(),
         time: $('#timeIn').val(),
+        // complete: $('#completeIn').val(),
         comment: $('#commentIn').val()
     }
     // adds new task to DOM
@@ -79,8 +101,15 @@ function renderRoutines(routines) {
         $tr.append(`<td>${routine.day}</td>`);
         $tr.append(`<td>${routine.task}</td>`);
         $tr.append(`<td>${routine.time}</td>`);
+        $tr.append(`<td>${routine.complete}</td>`);
         $tr.append(`<td>${routine.comment}</td>`);
-        $tr.append(`<td><button class="completeTask">Mark As Complete</td>`);
+        if(routine.complete === false) {
+            $tr.append(`<td><button class = "completeTask">Complete Task</button></td>`);
+          addIncompleteClass()
+        }else {
+            $tr.append(`<td><button class = "completeTask">Task Completed</button></td>`);
+            addcompleteClass()
+        }
         $tr.append(`<td><button class="deleteTask">Delete Task</td>`);
         $('#viewRoutines').append($tr);
     }
@@ -95,3 +124,10 @@ function clearFields() {
 
 }
 
+function addIncompleteClass() {
+    console.log('adding incomplete class to completion status field');
+}
+
+function addcompleteClass() {
+    console.log('adding complete class to completion status field');
+}

@@ -21,8 +21,8 @@ routineRouter.post('/',  (req, res) => {
     let newTask = req.body;
     console.log(`Adding routine`, newTask);
   
-    let queryText = `INSERT INTO "routines" ("day", "task", "time", "comment")
-                     VALUES ($1, $2, $3, $4);`;
+    let queryText = `INSERT INTO "routines" ("day", "task", "time", "complete", "comment")
+                     VALUES ($1, $2, $3, $4, $5);`;
 
     pool.query(queryText, [req.body.day, req.body.task, req.body.time, req.body.comment])
       .then(result => {
@@ -52,6 +52,41 @@ routineRouter.delete('/:id',  (req, res) => {
       res.sendStatus(500);
   })
 
+});
+
+
+// PUT function updates completion status in server
+routineRouter.put("/:id", (req, res) => {
+  let taskComplete = req.body.complete;
+  let id = req.params.id;
+  let queryText;
+
+  console.log(taskComplete);
+
+  if(taskComplete === 'false') {
+    queryText = `UPDATE "routines"
+                SET "complete" = true
+                WHERE "id" = $1;`;
+  }else if(taskComplete === 'true') {
+    queryText = `UPDATE "routines"
+                SET "complete" = false
+                WHERE "id" = $1;`;
+  };
+  
+
+  console.log(
+    `Updating Task with ${id}, setting complete to:`,
+    taskComplete
+  );
+
+  pool.query(queryText, [id])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(200);
+    });
 });
 
 module.exports = routineRouter;
