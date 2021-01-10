@@ -33,4 +33,25 @@ routineRouter.post('/',  (req, res) => {
       });
   });
 
+
+//DELETE 
+// Removes task based on 'id'.  'id' is not visible on the DOM, but is a property in the database
+routineRouter.delete('/:id',  (req, res) => {
+  let id = req.params.id; // id of the thing to delete
+  console.log('Delete route called with id of', id);
+
+  const queryText = `DELETE FROM "routines" WHERE "id" = $1;`
+
+  // TODO - REPLACE BELOW WITH YOUR CODE
+  pool.query(queryText, [req.params.id])
+  .then((result) => {
+      console.log(result);
+      res.sendStatus(204)
+  }).catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+  })
+
+});
+
 module.exports = routineRouter;
