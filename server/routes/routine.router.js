@@ -19,7 +19,7 @@ routineRouter.get('/', (req, res) => {
 // POST
 routineRouter.post('/',  (req, res) => {
     let newTask = req.body;
-    console.log(`Adding routine`, newRoutine);
+    console.log(`Adding routine`, newTask);
   
     let queryText = `INSERT INTO "routines" ("day", "task", "time", "comment")
                      VALUES ($1, $2, $3, $4);`;
