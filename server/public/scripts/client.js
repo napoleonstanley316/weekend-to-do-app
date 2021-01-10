@@ -105,14 +105,16 @@ function renderRoutines(routines) {
         $tr.append(`<td>${routine.comment}</td>`);
         if(routine.complete === false) {
             $tr.append(`<td><button class = "completeTask">Complete Task</button></td>`);
-          addIncompleteClass()
+        //   addIncompleteClass()
+        $(this).closest('tr').addClass("incomplete")
         }else {
             $tr.append(`<td><button class = "completeTask">Task Completed</button></td>`);
-            addcompleteClass()
+            // addcompleteClass()
         }
         $tr.append(`<td><button class="deleteTask">Delete Task</td>`);
         $('#viewRoutines').append($tr);
     }
+
 }
 
 function clearFields() {
@@ -124,10 +126,19 @@ function clearFields() {
 
 }
 
-function addIncompleteClass() {
-    console.log('adding incomplete class to completion status field');
-}
+// attpempting to add class to completion status field
+// function addIncompleteClass() {
+//     console.log('adding incomplete class to completion status field');
+    // let newClass = $(this).closest('tr')
+    // console.log(newClass)
+    // //.addClass("complete");
+// }
 
-function addcompleteClass() {
-    console.log('adding complete class to completion status field');
-}
+// attpempting to add class to completion status field
+
+// function addcompleteClass() {
+//     console.log('adding complete class to completion status field');
+    // const routine = $(this).closest('tr').data('complete');
+    // console.log(routine)
+    // //.addClass("incomplete");
+// }

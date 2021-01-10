@@ -1,7 +1,28 @@
 .taskTable { 
     border-collapse: collapse; 
-    border: 2px solid; 
+    border: 5px solid; 
     border-color: black;
-    background-color: rgb(255, 174, 0);
+    background-color: ;
     text-align: center;
    }
+
+   .complete {
+       background-color: green;
+   }
+
+   .incomplete {
+    background-color: red;
+}
+
+#mainBody {
+    background-color: darkgrey;
+}
+
+#table {
+    background-color: lightgreen;
+    border-color: black;
+}
+
+#tableHead {
+    background-color: lightgrey;
+}
