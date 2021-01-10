@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const taskRouter = require('./routes/task.router.js');
+const routineRouter = require('./routes/routine.router.js');
 
 app.use(bodyParser.urlencoded({extended: true}));
 
 // ROUTES
-app.use('/tasks', taskRouter)
+app.use('/routines', routineRouter)
 
 // Serve back static files by default
 app.use(express.static('server/public'));
