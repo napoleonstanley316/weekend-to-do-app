@@ -15,6 +15,14 @@
         <link rel="stylesheet" href="styles/styles.css">
     </head>
     <body>
+        <section id="addRoutine">
+            <h2>Add New Task</h2>
+            <input type="text" id="dayIn" value="" placeholder="Day">
+            <input type="text" id="taskIn" value="" placeholder="Task">
+            <input type="text" id="timeIn" value="" placeholder="Time">
+            <input type="text" id="commentIn" value="" placeholder="Comments">
+            <button type="button" id="addButton">Add New Task</button>
+          </section>
         <section>
             <h2>Daily Routine Task List</h2>
             <table>
@@ -28,7 +36,7 @@
                   <th>Remove Task</th>
                 </tr>
               </thead>
-              <tbody id="viewRoutines">
+              <tbody id="viewRoutines" class="taskTable">
               </tbody>
             </table>
           </section>

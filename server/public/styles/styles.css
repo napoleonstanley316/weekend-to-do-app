@@ -1,0 +1,7 @@
+.taskTable { 
+    border-collapse: collapse; 
+    border: 2px solid; 
+    border-color: black;
+    background-color: rgb(255, 174, 0);
+    text-align: center;
+   }
