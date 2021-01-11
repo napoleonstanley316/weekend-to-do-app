@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     console.log('JQ');
     // Establish Click Listeners
@@ -14,7 +13,6 @@ function clickListeners() {
     $('#viewRoutines').on('click', '.deleteTask', deleteTask);
     $('#viewRoutines').on('click', '.completeTask', completeTask);
 } // end of clickListeners
-
 
 function completeTask() {
     console.log('clicked completeTask');
@@ -32,9 +30,7 @@ function completeTask() {
     }).catch(function (error) {
       alert('error updating status');
     })
-  
   }
-
 
 function deleteTask() {
     console.log('deleteTask has been called');
@@ -59,7 +55,7 @@ function handleSubmit() {
         day: $('#dayIn').val(),
         task: $('#taskIn').val(),
         time: $('#timeIn').val(),
-        // complete: $('#completeIn').val(),
+        complete: $('#completeIn').val(),
         comment: $('#commentIn').val()
     }
     // adds new task to DOM
@@ -89,7 +85,6 @@ function getRoutines() {
         renderRoutines(response);
     });
 } // end of getRoutines
-
 
 // displays "routines" data on the DOM and stores in server database 
 function renderRoutines(routines) {
@@ -126,19 +121,4 @@ function clearFields() {
 
 }
 
-// attpempting to add class to completion status field
-// function addIncompleteClass() {
-//     console.log('adding incomplete class to completion status field');
-    // let newClass = $(this).closest('tr')
-    // console.log(newClass)
-    // //.addClass("complete");
-// }
 
-// attpempting to add class to completion status field
-
-// function addcompleteClass() {
-//     console.log('adding complete class to completion status field');
-    // const routine = $(this).closest('tr').data('complete');
-    // console.log(routine)
-    // //.addClass("incomplete");
-// }

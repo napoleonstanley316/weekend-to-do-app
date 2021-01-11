@@ -24,7 +24,7 @@ routineRouter.post('/',  (req, res) => {
     let queryText = `INSERT INTO "routines" ("day", "task", "time", "complete", "comment")
                      VALUES ($1, $2, $3, $4, $5);`;
 
-    pool.query(queryText, [req.body.day, req.body.task, req.body.time, req.body.comment])
+    pool.query(queryText, [req.body.day, req.body.task, req.body.time, req.body.complete, req.body.comment])
       .then(result => {
         res.sendStatus(201);
       }).catch(error => {
