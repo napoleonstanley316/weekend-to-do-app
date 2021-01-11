@@ -19,6 +19,9 @@ function completeTask() {
   
     let routine = $(this).closest('tr').data('routine');
     console.log(routine);
+    let status = $(this).closest('tr').data('complete');
+    console.log(routine, status);
+    
   
     $.ajax({
       type: 'PUT',
@@ -108,6 +111,12 @@ function renderRoutines(routines) {
         }
         $tr.append(`<td><button class="deleteTask">Delete Task</td>`);
         $('#viewRoutines').append($tr);
+
+        if (routine.complete === true) {
+            $tr.addClass('complete')
+        } else if (routine.complete === false) {
+            $tr.addClass('incomplete')
+        }
     }
 
 }
